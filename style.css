@@ -1,0 +1,318 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #eaeaea;
+  scroll-behavior: smooth;
+  background-color: #0A0512;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cdefs%3E%3CradialGradient id='a' cx='500' cy='500' r='21.6%25' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%230A0512'/%3E%3Cstop offset='1' stop-color='%23020205'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='500' cy='500' r='45.1%25' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%233A1097' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%233A1097' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1000' height='1000'/%3E%3Cg fill='none' stroke='%230D0A3A' stroke-width='1.6' stroke-miterlimit='10' stroke-opacity='0.08'%3E%3Ccircle cx='500' cy='500' r='725'/%3E%3Ccircle cx='500' cy='500' r='700'/%3E%3Ccircle cx='500' cy='500' r='675'/%3E%3Ccircle cx='500' cy='500' r='650'/%3E%3Ccircle cx='500' cy='500' r='625'/%3E%3Ccircle cx='500' cy='500' r='600'/%3E%3Ccircle cx='500' cy='500' r='575'/%3E%3Ccircle cx='500' cy='500' r='550'/%3E%3Ccircle cx='500' cy='500' r='525'/%3E%3Ccircle cx='500' cy='500' r='500'/%3E%3Ccircle cx='500' cy='500' r='475'/%3E%3Ccircle cx='500' cy='500' r='450'/%3E%3Ccircle cx='500' cy='500' r='425'/%3E%3Ccircle cx='500' cy='500' r='400'/%3E%3Ccircle cx='500' cy='500' r='375'/%3E%3Ccircle cx='500' cy='500' r='350'/%3E%3Ccircle cx='500' cy='500' r='325'/%3E%3Ccircle cx='500' cy='500' r='300'/%3E%3Ccircle cx='500' cy='500' r='275'/%3E%3Ccircle cx='500' cy='500' r='250'/%3E%3Ccircle cx='500' cy='500' r='225'/%3E%3Ccircle cx='500' cy='500' r='200'/%3E%3Ccircle cx='500' cy='500' r='175'/%3E%3Ccircle cx='500' cy='500' r='150'/%3E%3Ccircle cx='500' cy='500' r='125'/%3E%3Ccircle cx='500' cy='500' r='100'/%3E%3Ccircle cx='500' cy='500' r='75'/%3E%3Ccircle cx='500' cy='500' r='50'/%3E%3Ccircle cx='500' cy='500' r='25'/%3E%3C/g%3E%3Crect fill-opacity='0.08' fill='url(%23b)' width='1000' height='1000'/%3E %3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
+
+}
+
+/* Neon Accent */
+.text-purple { color: #9B8CFF !important; }
+.highlight { color: #6C63FF; text-shadow: 0 0 10px #6C63FF; }
+
+
+
+:root{
+  --nav-bg: rgba(5,7,15,0.75);
+  --nav-bg-solid: rgba(5,7,15,0.98);
+  --accent-blue: #3E8BFF;
+  --accent-purple: #6C63FF;
+  --text-light: #E6E9FF;
+  --border-neon: rgba(108,99,255,0.16);
+  --shadow-neon: 0 0 20px rgba(108,99,255,0.18);
+  --glass: blur(8px);
+  --transition: 0.28s ease;
+}
+
+
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: var(--glass);
+  -webkit-backdrop-filter: var(--glass);
+  border-bottom: 1px solid var(--border-neon);
+  transition: background var(--transition), height var(--transition), box-shadow var(--transition), padding var(--transition);
+  padding: 18px 40px;
+  display: flex;
+  justify-content: center; /* keeps your centered nav */
+  align-items: center;
+}
+
+/* If you decide to add a scrolled class via JS later, this is ready */
+header.scrolled {
+  background: var(--nav-bg-solid);
+  box-shadow: var(--shadow-neon);
+  padding: 10px 28px;
+}
+
+/* nav container inside header */
+header nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap; /* wraps on small screens */
+}
+
+/* Links (your plain <a> elements) */
+header nav a {
+  color: var(--text-light);
+  font-weight: 600;
+  margin-left: 12px;
+  padding: 6px 4px;
+  position: relative;
+  transition: color var(--transition), transform var(--transition);
+  display: inline-block;
+  letter-spacing: 0.2px;
+}
+
+/* Hover color + glow */
+header nav a:hover,
+header nav a:focus {
+  color: var(--accent-purple);
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(108,99,255,0.28);
+  outline: none;
+}
+
+/* Underline animation that grows from center */
+header nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  transform: translateX(-50%);
+  transition: width 0.32s cubic-bezier(.2,.9,.2,1);
+  border-radius: 2px;
+}
+
+/* active or hovered state */
+header nav a:hover::after,
+header nav a:focus::after,
+header nav a.active::after {
+  width: 70%;
+}
+
+/* small-screen friendly */
+@media (max-width: 900px) {
+  header {
+    padding: 12px 18px;
+  }
+  header nav {
+    gap: 10px;
+  }
+  header nav a {
+    margin-left: 8px;
+    font-size: 0.95rem;
+    padding: 8px 6px;
+  }
+  header nav a::after { bottom: -4px; height: 2px; }
+}
+
+/* very small screens: stack links and center */
+@media (max-width: 520px) {
+  header {
+    padding: 10px;
+  }
+  header nav {
+    width: 100%;
+    justify-content: center;
+  }
+  header nav a {
+    margin: 6px 8px;
+  }
+}
+
+/* Optional: small glowing brand text if you add a .logo element */
+header .logo {
+  margin-right: 20px;
+  color: var(--accent-purple);
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(108,99,255,0.22);
+}
+
+
+
+
+
+/* HERO */
+.hero {
+  height: 100vh;
+  padding:  40px 40px;
+ /* background: radial-gradient(circle at top left, #0A0E1A, #05070F);*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.hero h1 { font-size: 4rem; font-weight: 700; }
+.hero p { font-size: 2rem; color: #98A9FF; }
+
+.btn-main {
+  background: #6C63FF;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  color: #fff;
+  margin-top: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-main:hover {
+  background: #3E8BFF;
+  box-shadow: 0 0 15px #6C63FF;
+  transform: translateY(-3px);
+}
+
+.hero-img {
+  max-width: 600px;
+  filter: drop-shadow(0 0 25px rgba(108,99,255,0.4));
+}
+
+@media (max-width: 768px) {
+  .hero{
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 90px;
+    padding-bottom: 0;
+    gap: 20px;
+  
+  }
+  .hero h1{
+    font-size: 44px;
+  }
+  .hero p {
+    font-size: 22px;
+  }
+  .hero img{
+    padding-top: 0;
+  }
+  #about{
+    padding: 30px 50px;
+  }
+  .about-text{
+    font-size: small;
+  }
+}
+
+/* SECTION TITLES */
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #9B8CFF;
+  text-shadow: 0 0 10px #6C63FF;
+  text-align: center;
+}
+
+/* ABOUT */
+.about { padding: 80px 20px; text-align: left; display: flex; justify-content:center; }
+.about-text { font-size: 22px; max-width: 800px; }
+
+.skills span {
+  background: #6C63FF;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin: 5px;
+  display: inline-block;
+}
+
+/* PROJECTS */
+.projects { padding: 100px 20px; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: #0F1323;
+  border: 1px solid #1A1F33;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(108,99,255,0.4);
+}
+
+.project-card img { width: 100%; }
+
+.project-card .content {
+  padding: 20px;
+}
+.project-card .tech { color: #98A9FF; margin-bottom: 10px; }
+
+.project-card .buttons a {
+  background: #6C63FF;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-right: 10px;
+  color: white;
+  display: inline-block;
+  transition: 0.3s;
+}
+.project-card .buttons a:hover {
+  background: #3E8BFF;
+}
+
+
+  .contact {
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.contact-email {
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-email i {
+  color: #7c7cff;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-icons a {
+  font-size: 1.8rem;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icons a:hover {
+  color: #7c7cff;
+  transform: translateY(-6px) scale(1.1);
+}
+
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+  background: #05070F;
+}
